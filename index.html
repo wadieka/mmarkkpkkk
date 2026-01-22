@@ -75,19 +75,25 @@
             font-weight: bold;
             font-size: 0.875rem;
         }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin 1s linear infinite;
+        }
     </style>
 </head>
 <body class="bg-gray-50 pb-64">
     <div class="max-w-md mx-auto p-4">
         <header class="text-center py-6">
-            <h1 class="text-2xl font-bold text-gray-800">代購商品訂購單</h1>
+            <h1 class="text-2x2 font-bold text-gray-800">☃️《mmarkkpkkk_26年4月書展代購訂購單》☃️</h1>
             <div class="description-text text-gray-500 mt-4 text-sm text-left bg-white p-4 rounded-lg border border-dashed border-gray-300">
 【訂購須知】
 👉主要參加1/24場，會投簽售
 👉部分商品皆有降價，詳細請見下方金額。近期泰銖匯率不佳請理解。
 ✅人肉扛回，無須國際運費。泰國品質請理解，不因任何瑕疵問題退貨，若有缺貨情況發生會全額退款。
-✅回國後走賣貨便20+38，不內退。會使用二手包材，介意者請繞道。
-✅先匯款，後填單；填單完成即視為購買，恕不得取消唷。
+✅回國後走賣貨便20+38，不內退。會使用二手包材，介意者介意者請繞道。
+✅先匯款，後送單；填單完成即視為購買，恕不得取消。
 
 💰匯款帳號:
 台新(812) 28881019124887
@@ -96,40 +102,60 @@
 為方便管理，請跟團者務必加入社群，缺貨到貨出貨等最新消息皆會於此一併告知!
 👉<a href="https://line.me/ti/g2/hQDj2h3t7YEkhQtO6zck-48p4Y9nmVumrSja5w?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank">點這裡加入社群</a>
 
-有任何問題歡迎 IG (<a href="https://instagram.com/mmarkkpkkk" target="_blank">mmarkkpkkk</a>) 或社群直接 @mmarkkpkkk 本人喔
+有任何問題歡迎 IG (<a href="https://instagram.com/mmarkkpkkk" target="_blank">mmarkkpkkk</a>) 或社群直接 @mmarkkpkkk本人
             </div>
         </header>
 
-        <!-- 聯絡資訊區塊 (修正位置至中間) -->
+        <!-- 聯絡資訊區塊 -->
         <section class="bg-white rounded-xl p-4 mb-6 shadow-sm border border-gray-100">
             <h2 class="font-semibold text-lg mb-4 border-b pb-2 text-blue-600">聯絡資訊 (必填)</h2>
             <div class="space-y-4">
                 <div>
                     <label class="block text-sm text-gray-600 mb-1 required-label">對帳表名稱</label>
-                    <input type="text" id="userName" placeholder="請輸入您的姓名" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    <input type="text" id="userName" placeholder="請輸入您的名稱" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
                 </div>
                 <div>
                     <label class="block text-sm text-gray-600 mb-1 required-label">匯款日期</label>
                     <input type="text" id="payDate" placeholder="請輸入日期 (如: 01/20)" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
                 </div>
                 <div>
-                    <label class="block text-sm text-gray-600 mb-1 required-label">匯款金額</label>
-                    <input type="number" id="payAmount" placeholder="請輸入總金額" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    <label class="block text-sm text-gray-600 mb-1 required-label">匯款帳號後五碼</label>
+                    <input type="text" id="payAccount" placeholder="請輸入後 5 碼" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
                 </div>
                 <div>
                     <label class="block text-sm text-gray-600 mb-1 required-label">聯絡資訊 (IG)</label>
-                    <input type="text" id="userIG" placeholder="請輸入您的 IG 帳號" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    <input type="text" id="userIG" placeholder="請提供可聯絡的帳號" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">其他欲備註事項</label>
+                    <input type="text" id="memo" placeholder="開放告白><" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
                 </div>
             </div>
         </section>
-        
+
+        <!-- 商品資訊區塊 -->
         <div id="productList" class="space-y-6"></div>
 
-        <!-- 底部購物車 -->
+
+        <!-- 最終提醒事項區塊 -->
+        <section class="mt-8 mb-4">
+            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+                <h4 class="text-yellow-800 font-bold text-sm mb-2 flex items-center gap-1">
+                    <span>⚠️</span> 提交前請最後確認
+                </h4>
+                <ul class="text-xs text-yellow-700 space-y-1 list-disc pl-4">
+                    <li>請確認<strong>匯款金額</strong>與<strong>購物車總計金額</strong>相符。</li>
+                    <li>請務必<strong>匯款完成後才提交訂單</strong>。</li>
+                    <ul>💰匯款帳號:台新(812) 28881019124887</ul>                    
+                    <li>訂單完成後，可至<a href="https://docs.google.com/spreadsheets/d/1cnLagIAqDdCZyUTd6kQZBSekL_c8RvmOwAlxC-LCIOs/edit?gid=917520651#gid=917520651" target="_blank">對帳表</a>確認入帳情況及購買商品</li>
+                </ul>
+            </div>
+        </section>
+
         <div class="fixed bottom-0 left-0 right-0 bg-white cart-float border-t z-40">
             <div id="cartDetails" class="max-w-md mx-auto px-4 py-3 border-b bg-gray-50 hidden">
                 <div class="flex justify-between items-center mb-2">
-                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">已加入清單：</p>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">已加入購物車：</p>
                     <button onclick="toggleCartDetails()" class="text-gray-400 text-xs">收起 ✕</button>
                 </div>
                 <div id="cartItemsList" class="cart-details-max-h space-y-2 mb-2"></div>
@@ -139,7 +165,7 @@
                 <div class="flex-1">
                     <p class="text-sm text-gray-500 flex items-center gap-1">
                         總計 <span id="totalItems" class="text-blue-600 font-bold">0</span> 件商品
-                        <button id="viewDetailBtn" onclick="toggleCartDetails()" class="text-blue-500 text-xs underline ml-2">查看/調整明細</button>
+                        <button onclick="toggleCartDetails()" class="text-blue-500 text-xs underline ml-2">明細</button>
                     </p>
                     <p class="text-xl font-bold text-red-500">總金額: $<span id="totalPrice">0</span></p>
                 </div>
@@ -149,12 +175,16 @@
             </div>
         </div>
 
-        <!-- 成功模態框 -->
+        <div id="loadingOverlay" class="fixed inset-0 bg-black/70 flex flex-col items-center justify-center hidden z-[60] p-6 text-center">
+            <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin-slow mb-4"></div>
+            <h3 class="text-white text-xl font-bold mb-2">訂單送出中...</h3>
+            <p class="text-blue-200 text-sm">請不要重新整理頁面。</p>
+        </div>
+
         <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4">
             <div class="bg-white p-8 rounded-2xl text-center max-w-sm w-full shadow-2xl">
                 <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-5xl mx-auto mb-4">✓</div>
                 <h3 class="text-xl font-bold mb-2">訂單提交成功！</h3>
-                <p class="text-gray-600 mb-6">我們已收到您的訂單與匯款資訊，並已更新統計表。</p>
                 <button onclick="location.reload()" class="w-full bg-blue-600 text-white px-6 py-3 rounded-xl font-bold">返回首頁</button>
             </div>
         </div>
@@ -162,38 +192,10 @@
 
     <script>
         const products = [
-            {
-                id: 1,
-                name: "附繩證件套",
-                price: 660,
-                image: "https://i.ibb.co/k2YkHDmd/image.jpg",
-                variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI", "MUVMUV", "LUNAR", "ANY", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"]
-            },
-            {
-                id: 2,
-                name: "壓克力磁吸卡套",
-                price: 450,
-                image: "https://i.ibb.co/JF5DYWQ6/image.jpg",
-                variants: ["KristSingto", "OffGun", "TayNew", "EarthMix", "BounPrem", "PondPhuwin", "ForceBook", "JoongDunk", "JimmySea", "FirstKhaotung", "GeminiFourth", "WinnySatang", "SeaKeen", "PerthSanta", "WilliamEst", "JuniorMark", "JossGawin", "MarkOhm", "AouBoom", "MilkLove", "NamtanFilm", "EmiBonnie", "Win", "Nanon", "Sky", "Nani", "LYKN"]
-            },
-            {
-                id: 3,
-                name: "男生隨機卡",
-                price: 230,
-                image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=400&q=80",
-                description: "※需同時購買其他商品才能購入。每單至多4包。",
-                limit: 4,
-                variants: [] 
-            },
-            {
-                id: 4,
-                name: "女生隨機卡",
-                price: 230,
-                image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=400&q=80",
-                description: "※需同時購買其他商品才能購入。每單至多10包。",
-                limit: 10,
-                variants: [] 
-            }
+            { id: 1, name: "附繩證件套", price: 660, image: "https://i.ibb.co/k2YkHDmd/image.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI", "MUVMUV", "LUNAR", "ANY", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"] },//全娃名
+            { id: 2, name: "壓克力磁吸卡套", price: 450, image: "https://i.ibb.co/JF5DYWQ6/image.jpg", variants: ["KristSingto", "OffGun", "TayNew", "EarthMix", "BounPrem", "PondPhuwin", "ForceBook", "JoongDunk", "JimmySea", "FirstKhaotung", "GeminiFourth", "WinnySatang", "SeaKeen", "PerthSanta", "WilliamEst", "JuniorMark", "JossGawin", "MarkOhm", "AouBoom","AlmondProgress","OhmPoon","LuckMick", "ChokunAston","SaveFranc","SurfJava", "MilkLove", "NamtanFilm", "EmiBonnie", "Win", "Nanon", "Sky", "Nani", "LYKN"] }, //全CP名
+            { id: 3, name: "男生隨機卡", price: 230, image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=400&q=80", description: "※須購買其他商品才能加購，每單至多4包。", limit: 4, variants: [] },
+            { id: 4, name: "女生隨機卡", price: 230, image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=400&q=80", description: "※須購買其他商品才能加購，每單至多10包。", limit: 10, variants: [] }
         ];
 
         let cart = {}; 
@@ -205,66 +207,28 @@
             products.forEach(product => {
                 const card = document.createElement('div');
                 card.className = "bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100";
-                
-                const descHtml = product.description ? `<div class="product-note">${product.description}</div>` : '';
                 const hasVariants = product.variants && product.variants.length > 0;
-                let selectionHtml = '';
-                
-                if (hasVariants) {
-                    selectionHtml = `
-                        <select id="select-${product.id}" class="w-full border border-gray-200 rounded-lg p-3 bg-gray-50 text-sm font-medium focus:ring-2 focus:ring-blue-500 outline-none">
-                            <option value="">-- 請選擇款式 --</option>
-                            ${product.variants.map(v => `<option value="${v}">${v}</option>`).join('')}
-                        </select>`;
-                } else {
-                    productQtyMap[product.id] = 1;
-                    selectionHtml = `
-                        <div class="flex items-center justify-between bg-gray-50 p-2 rounded-lg border border-gray-100">
-                            <span class="text-sm font-medium text-gray-500 ml-2">數量</span>
-                            <div class="qty-control">
-                                <button onclick="changeProductQty(${product.id}, -1)" class="qty-btn text-red-500">-</button>
-                                <span id="qty-val-${product.id}" class="qty-val">1</span>
-                                <button onclick="changeProductQty(${product.id}, 1)" class="qty-btn text-green-500">+</button>
-                            </div>
-                        </div>`;
-                }
+                let selectionHtml = hasVariants ? 
+                    `<select id="select-${product.id}" class="w-full border border-gray-200 rounded-lg p-3 bg-gray-50 text-sm focus:ring-2 focus:ring-blue-500 outline-none"><option value="">-- 款式 --</option>${product.variants.map(v => `<option value="${v}">${v}</option>`).join('')}</select>` :
+                    `<div class="flex items-center justify-between bg-gray-50 p-2 rounded-lg"><span class="text-sm font-medium text-gray-500 ml-2">數量</span><div class="qty-control"><button onclick="changeProductQty(${product.id}, -1)" class="qty-btn text-red-500">-</button><span id="qty-val-${product.id}" class="qty-val">1</span><button onclick="changeProductQty(${product.id}, 1)" class="qty-btn text-green-500">+</button></div></div>`;
                 
                 card.innerHTML = `
                     <div class="relative"><img src="${product.image}" class="w-full h-44 object-cover"><div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 text-right"><p class="text-white font-bold">$${product.price}</p></div></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg text-gray-800">${product.name}</h3>
-                        ${descHtml}
-                        <div class="space-y-3 mt-3">
-                            ${selectionHtml}
-                            <button onclick="addToCart(${product.id})" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-all btn-pop shadow-md shadow-blue-100">＋ 加入購物車</button>
-                        </div>
-                    </div>`;
+                    <div class="p-4"><h3 class="font-bold text-lg text-gray-800">${product.name}</h3>${product.description ? `<div class="product-note">${product.description}</div>` : ''}<div class="space-y-3 mt-3">${selectionHtml}<button onclick="addToCart(${product.id})" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-all btn-pop">＋ 加入購物車</button></div></div>`;
                 listEl.appendChild(card);
             });
-            ['userName', 'payDate', 'payAmount', 'userIG'].forEach(id => {
+            // 監聽必填欄位
+            ['userName', 'payDate', 'payAccount', 'userIG'].forEach(id => {
                 const el = document.getElementById(id);
                 if(el) el.addEventListener('input', function() { if(this.value.trim() !== "") this.classList.remove('input-error'); });
             });
-        }
-
-        function checkLimit(productId, currentInCart, addingQty) {
-            const product = products.find(p => p.id == productId);
-            if (product && product.limit && (currentInCart + addingQty) > product.limit) {
-                alert(`「${product.name}」每單至多購買 ${product.limit} 個！`);
-                return false;
-            }
-            return true;
         }
 
         function changeProductQty(productId, delta) {
             let current = productQtyMap[productId] || 1;
             const product = products.find(p => p.id == productId);
             const nextValue = current + delta;
-            if (nextValue < 1) return;
-            if (product.limit && nextValue > product.limit) {
-                alert(`每單至多購買 ${product.limit} 個！`);
-                return;
-            }
+            if (nextValue < 1 || (product.limit && nextValue > product.limit)) return;
             productQtyMap[productId] = nextValue;
             document.getElementById(`qty-val-${productId}`).innerText = nextValue;
         }
@@ -272,137 +236,85 @@
         function addToCart(productId) {
             const product = products.find(p => p.id == productId);
             const hasVariants = product.variants && product.variants.length > 0;
-            let variant = "單一款式";
+            let variant = "單一";
             let addQty = 1;
-
             if (hasVariants) {
-                const selectEl = document.getElementById(`select-${productId}`);
-                variant = selectEl.value;
-                if (!variant) { alert("請先選擇款式！"); return; }
-                selectEl.value = "";
+                variant = document.getElementById(`select-${productId}`).value;
+                if (!variant) { alert("請選擇款式！"); return; }
+                document.getElementById(`select-${productId}`).value = "";
             } else {
                 addQty = productQtyMap[productId] || 1;
             }
-
             const key = `${productId}|${variant}`;
-            const currentQty = cart[key] ? cart[key].quantity : 0;
-
-            if (!checkLimit(productId, currentQty, addQty)) return;
-
-            if (!cart[key]) { 
-                cart[key] = { productId, variant, quantity: addQty, price: product.price, name: product.name }; 
-            } else { 
-                cart[key].quantity += addQty; 
-            }
-            
-            if (!hasVariants) {
-                productQtyMap[productId] = 1;
-                const qtyValEl = document.getElementById(`qty-val-${productId}`);
-                if (qtyValEl) qtyValEl.innerText = 1;
-            }
-
-            showToast(`已加入購物車`);
+            if (product.limit && ((cart[key]?.quantity || 0) + addQty) > product.limit) { alert("超出限購！"); return; }
+            if (!cart[key]) cart[key] = { ...product, variant, quantity: 0 };
+            cart[key].quantity += addQty;
             calculateTotal();
             renderCartDetails();
-        }
-
-        function updateCartQty(key, delta) {
-            if (cart[key]) {
-                const item = cart[key];
-                if (delta > 0 && !checkLimit(item.productId, item.quantity, delta)) return;
-                item.quantity += delta;
-                if (item.quantity <= 0) delete cart[key];
-            }
-            calculateTotal();
-            renderCartDetails();
-        }
-
-        function toggleCartDetails() { document.getElementById('cartDetails').classList.toggle('hidden'); }
-
-        function showToast(msg) {
-            const toast = document.createElement('div');
-            toast.className = "fixed top-10 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-full text-sm font-bold z-[100] shadow-2xl opacity-0 transition-opacity duration-300";
-            toast.innerText = msg;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.style.opacity = "1", 10);
-            setTimeout(() => { toast.style.opacity = "0"; setTimeout(() => toast.remove(), 300); }, 2000);
+            showToast("已加入購物車");
         }
 
         function renderCartDetails() {
             const listEl = document.getElementById('cartItemsList');
-            const detailContainer = document.getElementById('cartDetails');
             const items = Object.values(cart);
-            if (items.length === 0) { listEl.innerHTML = '<p class="text-gray-400 text-xs italic py-4 text-center">購物車目前是空的</p>'; detailContainer.classList.add('hidden'); return; }
-            listEl.innerHTML = items.map(item => {
-                const key = `${item.productId}|${item.variant}`;
-                return `<div class="flex justify-between items-center bg-white p-3 rounded-xl border border-gray-200 shadow-sm">
-                    <div class="flex-1"><p class="font-bold text-gray-800 text-sm">${item.name}</p><p class="text-blue-500 text-xs mt-1">${item.variant}</p></div>
-                    <div class="flex items-center gap-3">
-                        <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-gray-50"><button onclick="updateCartQty('${key}', -1)" class="px-3 py-1 hover:bg-red-50">-</button><span class="w-8 text-center font-bold text-sm">${item.quantity}</span><button onclick="updateCartQty('${key}', 1)" class="px-3 py-1 hover:bg-green-50">+</button></div>
-                        <div class="text-right min-w-[70px]"><p class="text-xs font-bold text-gray-600">$${(item.quantity * item.price).toLocaleString()}</p></div>
-                    </div></div>`;
-            }).join('');
+            listEl.innerHTML = items.map(item => `<div class="flex justify-between items-center bg-white p-3 rounded-xl border border-gray-200 shadow-sm"><div class="flex-1"><p class="font-bold text-sm text-gray-800">${item.name}</p><p class="text-blue-500 text-xs">${item.variant}</p></div><div class="flex items-center gap-3"><div class="flex items-center border rounded-lg bg-gray-50"><button onclick="updateCartQty('${item.id}|${item.variant}', -1)" class="px-2 py-1">-</button><span class="w-6 text-center text-sm font-bold">${item.quantity}</span><button onclick="updateCartQty('${item.id}|${item.variant}', 1)" class="px-2 py-1">+</button></div><p class="text-xs font-bold w-16 text-right">$${(item.quantity * item.price).toLocaleString()}</p></div></div>`).join('');
+        }
+
+        function updateCartQty(key, delta) {
+            if (cart[key]) {
+                const product = products.find(p => p.id == cart[key].id);
+                if (delta > 0 && product.limit && cart[key].quantity >= product.limit) return;
+                cart[key].quantity += delta;
+                if (cart[key].quantity <= 0) delete cart[key];
+            }
+            calculateTotal();
+            renderCartDetails();
         }
 
         function calculateTotal() {
-            let totalItems = 0, totalPrice = 0;
-            Object.values(cart).forEach(item => { totalItems += item.quantity; totalPrice += (item.quantity * item.price); });
-            document.getElementById('totalItems').innerText = totalItems;
-            document.getElementById('totalPrice').innerText = totalPrice.toLocaleString();
+            let items = 0, price = 0;
+            Object.values(cart).forEach(i => { items += i.quantity; price += (i.quantity * i.price); });
+            document.getElementById('totalItems').innerText = items;
+            document.getElementById('totalPrice').innerText = price.toLocaleString();
         }
 
+        function toggleCartDetails() { document.getElementById('cartDetails').classList.toggle('hidden'); }
+        function showToast(m) { const t = document.createElement('div'); t.className = "fixed top-10 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-2 rounded-full text-xs z-[100]"; t.innerText = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2000); }
+
         async function submitOrder() {
-            const fields = [{id:'userName'}, {id:'payDate'}, {id:'payAmount'}, {id:'userIG'}];
-            let hasError = false;
-            fields.forEach(f => { 
-                const el = document.getElementById(f.id); 
-                if(!el.value.trim()){ el.classList.add('input-error'); hasError = true; } 
-            });
-            if(hasError){ alert("請填寫所有必填欄位！"); return; }
+            const required = ['userName', 'payDate', 'payAccount', 'userIG'];
+            let err = false;
+            required.forEach(id => { const el = document.getElementById(id); if(!el.value.trim()){ el.classList.add('input-error'); err = true; } });
             
-            const orderItems = Object.values(cart);
-            if (orderItems.length === 0) { alert("購物車是空的！"); return; }
+            const cartArray = Object.values(cart);
+            if(err || cartArray.length === 0){ alert("請填寫必填欄位或購物車！"); return; }
 
             const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.innerText;
-            
-            // 立即鎖定按鈕，防止重複提交
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.classList.remove('hidden');
             submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-            submitBtn.innerText = "提交中...";
 
             const finalData = {
                 timestamp: new Date().toLocaleString(),
                 customer: document.getElementById('userName').value,
                 payDate: document.getElementById('payDate').value,
-                payAmount: document.getElementById('payAmount').value,
+                payAccount: document.getElementById('payAccount').value, // 傳送帳號後五碼
                 ig: document.getElementById('userIG').value,
-                itemsText: orderItems.map(i => `${i.name}(${i.variant}) x${i.quantity}`).join('\n'),
-                itemsArray: orderItems,
+                memo: document.getElementById('memo').value || "", 
+                itemsText: cartArray.map(i => `${i.name}(${i.variant}) x${i.quantity}`).join('\n'),
+                itemsArray: cartArray,
                 total: document.getElementById('totalPrice').innerText
             };
 
-            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz859c4B5D40bPV53VcJo0VMYgeUY-84Ql8rbl_19Y-NXqDSUZeriGLNnOVf6RWpzPh/exec"; 
-
+            const URL = "https://script.google.com/macros/s/AKfycbz859c4B5D40bPV53VcJo0VMYgeUY-84Ql8rbl_19Y-NXqDSUZeriGLNnOVf6RWpzPh/exec";
             try {
-                // 使用 fetch 並設定較短的逾時邏輯 (GAS 正常處理約 2-5 秒)
-                const response = await fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    cache: 'no-cache',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(finalData)
-                });
-                
-                // no-cors 模式下無法得知是否 200 OK，但若 fetch 沒報錯通常代表發送成功
+                await fetch(URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(finalData) });
+                overlay.classList.add('hidden');
                 document.getElementById('successModal').classList.remove('hidden');
             } catch (e) {
-                console.error("提交失敗", e);
-                alert("伺服器繁忙或網路連線失敗，請稍候 10 秒後再試一次。");
-                // 失敗時解鎖按鈕讓使用者重試
+                alert("提交失敗，請檢查網路連線後重試。");
+                overlay.classList.add('hidden');
                 submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                submitBtn.innerText = originalText;
             }
         }
         window.onload = initApp;
