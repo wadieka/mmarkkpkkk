@@ -92,7 +92,7 @@
 👉主要參加1/24場，會投簽售
 👉部分商品皆有降價，詳細請見下方金額。近期泰銖匯率不佳請理解。
 ✅人肉扛回，無須國際運費。泰國品質請理解，不因任何瑕疵問題退貨，若有缺貨情況發生會全額退款。
-✅回國後走賣貨便20+38，不內退。會使用二手包材，介意者介意者請繞道。
+✅回國後走賣貨便20+38，不內退。會使用二手包材，介意者請繞道。
 ✅先匯款，後送單；填單完成即視為購買，恕不得取消。
 
 💰匯款帳號:
@@ -128,14 +128,13 @@
                 </div>
                 <div>
                     <label class="block text-sm text-gray-600 mb-1">其他欲備註事項</label>
-                    <input type="text" id="memo" placeholder="開放告白><" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    <input type="text" id="memo" placeholder=" " class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
                 </div>
             </div>
         </section>
 
         <!-- 商品資訊區塊 -->
         <div id="productList" class="space-y-6"></div>
-
 
         <!-- 最終提醒事項區塊 -->
         <section class="mt-8 mb-4">
@@ -144,6 +143,7 @@
                     <span>⚠️</span> 提交前請最後確認
                 </h4>
                 <ul class="text-xs text-yellow-700 space-y-1 list-disc pl-4">
+                    <li>請確認<strong>商品內容與款式</strong>皆正確。</li>
                     <li>請確認<strong>匯款金額</strong>與<strong>購物車總計金額</strong>相符。</li>
                     <li>請務必<strong>匯款完成後才提交訂單</strong>。</li>
                     <ul>💰匯款帳號:台新(812) 28881019124887</ul>                    
@@ -192,11 +192,11 @@
 
     <script>
         const products = [
-            { id: 1, name: "附繩證件套", price: 660, image: "https://i.ibb.co/k2YkHDmd/image.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI", "MUVMUV", "LUNAR", "ANY", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"] },//全娃名
-            { id: 2, name: "壓克力磁吸卡套", price: 450, image: "https://i.ibb.co/JF5DYWQ6/image.jpg", variants: ["KristSingto", "OffGun", "TayNew", "EarthMix", "BounPrem", "PondPhuwin", "ForceBook", "JoongDunk", "JimmySea", "FirstKhaotung", "GeminiFourth", "WinnySatang", "SeaKeen", "PerthSanta", "WilliamEst", "JuniorMark", "JossGawin", "MarkOhm", "AouBoom","AlmondProgress","OhmPoon","LuckMick", "ChokunAston","SaveFranc","SurfJava", "MilkLove", "NamtanFilm", "EmiBonnie", "Win", "Nanon", "Sky", "Nani", "LYKN"] }, //全CP名
+            { id: 1, name: "娃", price: 999, image: "https://i.ibb.co/k2YkHDmd/image.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI", "MUVMUV", "LUNAR", "ANY", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"] },
+            { id: 2, name: "人", price: 450, image: "https://i.ibb.co/JF5DYWQ6/image.jpg", variants: ["KristSingto", "OffGun", "TayNew", "EarthMix", "BounPrem", "PondPhuwin", "ForceBook", "JoongDunk", "JimmySea", "FirstKhaotung", "GeminiFourth", "WinnySatang", "SeaKeen", "PerthSanta", "WilliamEst", "JuniorMark", "JossGawin", "MarkOhm", "AouBoom","AlmondProgress","OhmPoon","LukeMick", "ChokunAston","SaveFranc","SurfJava", "MilkLove", "NamtanFilm", "EmiBonnie", "Win", "Nanon", "Sky", "Nani", "LYKN"] }, 
             { id: 3, name: "男生隨機卡", price: 230, image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=400&q=80", description: "※須購買其他商品才能加購，每單至多4包。", limit: 4, variants: [] },
-            { id: 4, name: "女生隨機卡", price: 230, image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=400&q=80", description: "※須購買其他商品才能加購，每單至多10包。", limit: 10, variants: [] }
-        ];
+            { id: 4, name: "女生隨機卡", price: 230, image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=400&q=80", description: "※須購買其他商品才能加購，每單至多10包。", limit: 10, variants: [] },
+         ];
 
         let cart = {}; 
         let productQtyMap = {}; 
@@ -217,7 +217,6 @@
                     <div class="p-4"><h3 class="font-bold text-lg text-gray-800">${product.name}</h3>${product.description ? `<div class="product-note">${product.description}</div>` : ''}<div class="space-y-3 mt-3">${selectionHtml}<button onclick="addToCart(${product.id})" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-all btn-pop">＋ 加入購物車</button></div></div>`;
                 listEl.appendChild(card);
             });
-            // 監聽必填欄位
             ['userName', 'payDate', 'payAccount', 'userIG'].forEach(id => {
                 const el = document.getElementById(id);
                 if(el) el.addEventListener('input', function() { if(this.value.trim() !== "") this.classList.remove('input-error'); });
@@ -298,7 +297,7 @@
                 timestamp: new Date().toLocaleString(),
                 customer: document.getElementById('userName').value,
                 payDate: document.getElementById('payDate').value,
-                payAccount: document.getElementById('payAccount').value, // 傳送帳號後五碼
+                payAccount: document.getElementById('payAccount').value, 
                 ig: document.getElementById('userIG').value,
                 memo: document.getElementById('memo').value || "", 
                 itemsText: cartArray.map(i => `${i.name}(${i.variant}) x${i.quantity}`).join('\n'),
