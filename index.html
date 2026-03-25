@@ -81,36 +81,37 @@
         .animate-spin-slow {
             animation: spin 1s linear infinite;
         }
+        #confirmItemList {
+            max-height: 200px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 <body class="bg-gray-50 pb-64">
     <div class="max-w-md mx-auto p-4">
         <header class="text-center py-6">
-            <h1 class="text-2x2 font-bold text-gray-800">☃️《mmarkkpkkk_2026年Fanvial代購訂購單》</h1>
+            <h1 class="text-2xl font-bold text-gray-800">☃️《mmarkkpkkk_2026年Fanvial代購訂購單》</h1>
             <div class="description-text text-gray-500 mt-4 text-sm text-left bg-white p-4 rounded-lg border border-dashed border-gray-300">
-【訂購須知】3/12晚上12點收單
-👉主要參加4/2場，會投簽售，有優先購。
-👉降價團已收單，現表單為代購團，詳細請見下方金額。
+【訂購須知】
+👉主要參加4/2場，會投簽售，介意者請迴避。
+👉部分商品有降價，詳細請見下方金額。近期泰銖匯率不佳請理解。
 ✅人肉扛回，無須國際運費。
-✅泰國品質請理解，不因任何瑕疵問題退貨，若有缺貨情況發生會依填單順序分配並全額退款。
-✅先匯款，後送單；送單完成即視為購買，恕不得取消。
-✅回國後走賣貨便20+38，內退20。會使用二手包材，介意者請繞道。
-❌一代娃不接  ⭕小說請另外私訊
+✅泰國品質請理解，不因任何瑕疵問題退貨，若有缺貨情況發生會依對帳表順序分配商品並全額退款。
+✅先匯款，後送單；送單完成即視為購買，恕不得取消。若送單時間早於匯款會以匯款時間為主排序，金額不符也會以最後修正時間為主，請勿搶快！！！
+✅回國後走賣貨便20+38，不內退。會使用二手包材，介意者請繞道。
+❌一代娃不代  ⭕小說請另外私訊
 ❌❌❌隨機卡額滿停收❌❌❌
 
     💰匯款帳號:
     台新(812) 28881019124887
     💰<a href="https://docs.google.com/spreadsheets/d/1cnLagIAqDdCZyUTd6kQZBSekL_c8RvmOwAlxC-LCIOs/edit?gid=28351659#gid=28351659" target="_blank">對帳表連結點我</a>
 
-為方便管理，請跟團者務必加入社群，缺貨到貨出貨等最新消息皆會於此一併告知! 
-(第一手的降價團也都是這裡優先公布😝)
+為方便管理，請跟團者務必加入社群，缺貨到貨出貨等最新消息皆會於此一併告知!
 👉<a href="https://line.me/ti/g2/hQDj2h3t7YEkhQtO6zck-48p4Y9nmVumrSja5w?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank">點這裡加入社群</a>
 
 有任何問題歡迎 IG (<a href="https://instagram.com/mmarkkpkkk" target="_blank">mmarkkpkkk</a>) 或社群直接 @mmarkkpkkk本人
             </div>
         </header>
-
-        
 
         <!-- 商品資訊區塊 -->
         <div id="productList" class="space-y-6"></div>
@@ -124,8 +125,8 @@
                     <input type="text" id="userName" placeholder="請輸入您的名稱" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
                 </div>
                 <div>
-                    <label class="block text-sm text-gray-600 mb-1 required-label">匯款日期與時間</label>
-                    <input type="text" id="payDate" placeholder="請輸入日期&匯款時間 (如: 01/20 13:15)" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    <label class="block text-sm text-gray-600 mb-1 required-label">匯款日期&時間</label>
+                    <input type="text" id="payDate" placeholder="請輸入日期+時間 (如: 6/2 3:21)" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
                 </div>
                 <div>
                     <label class="block text-sm text-gray-600 mb-1 required-label">匯款帳號後五碼</label>
@@ -149,7 +150,7 @@
                     <span>⚠️</span> 提交前請最後確認
                 </h4>
                 <ul class="text-xs text-yellow-700 space-y-1 list-disc pl-4">
-                    <li>可由下方明細中查看<strong>商品項目與款式</strong>是否正確。</li>
+                    <li><strong>商品項目與款式</strong>是否正確。</li>
                     <li><strong>匯款金額</strong>與<strong>購物車總計金額</strong>是否相符。</li>
                     <li>請務必<strong>匯款完成後才提交訂單</strong>。</li>             
                     <li>訂單成立後，可至<a href="https://docs.google.com/spreadsheets/d/1cnLagIAqDdCZyUTd6kQZBSekL_c8RvmOwAlxC-LCIOs/edit?gid=917520651#gid=917520651" target="_blank">對帳表</a>確認入帳情況及購買商品。</li>
@@ -157,6 +158,7 @@
             </div>
         </section>
 
+        <!-- 底部購物車導航 -->
         <div class="fixed bottom-0 left-0 right-0 bg-white cart-float border-t z-40">
             <div id="cartDetails" class="max-w-md mx-auto px-4 py-3 border-b bg-gray-50 hidden">
                 <div class="flex justify-between items-center mb-2">
@@ -174,43 +176,80 @@
                     </p>
                     <p class="text-xl font-bold text-red-500">總金額: $<span id="totalPrice">0</span></p>
                 </div>
-                <button id="submitBtn" onclick="submitOrder()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all btn-pop shadow-lg shadow-blue-200">
+                <button id="submitBtn" onclick="showConfirmModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all btn-pop shadow-lg shadow-blue-200">
                     提交訂單
                 </button>
             </div>
         </div>
 
+        <!-- 二次確認彈出視窗 -->
+        <div id="confirmModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 p-4">
+            <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden animate-pop">
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-4 text-orange-600">
+                        <span class="text-2xl">📸</span>
+                        <h3 class="text-lg font-bold">請確認訂單內容並截圖保障彼此！</h3>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-200">
+                        <p class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-widest border-b pb-1">購物清單</p>
+                        <div id="confirmItemList" class="space-y-2">
+                            <!-- JS 動態插入 -->
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-dashed border-gray-300 flex justify-between items-center">
+                            <span class="font-bold text-gray-700">應匯款總額</span>
+                            <span id="confirmTotal" class="text-xl font-black text-red-500"></span>
+                        </div>
+                    </div>
+
+                    <div class="text-sm text-gray-500 bg-blue-50 p-3 rounded-lg mb-6 leading-relaxed">
+                        <p class="flex items-start gap-2">
+                            <span class="mt-1">💡</span>
+                            <span>提交後即視為購買，對帳表順序會以匯款時間為主，請確認是否已匯款完畢？</span>
+                        </p>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button onclick="closeConfirmModal()" class="flex-1 py-3 border border-gray-200 rounded-xl font-bold text-gray-500">返回修改</button>
+                        <button onclick="executeSubmit()" class="flex-1 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 shadow-lg shadow-blue-100">確認送出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 傳送中遮罩 -->
         <div id="loadingOverlay" class="fixed inset-0 bg-black/70 flex flex-col items-center justify-center hidden z-[60] p-6 text-center">
             <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin-slow mb-4"></div>
             <h3 class="text-white text-xl font-bold mb-2">訂單送出中...</h3>
             <p class="text-blue-200 text-sm">請不要重新整理頁面。</p>
         </div>
 
+        <!-- 成功彈窗 -->
         <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4">
             <div class="bg-white p-8 rounded-2xl text-center max-w-sm w-full shadow-2xl">
                 <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-5xl mx-auto mb-4">✓</div>
                 <h3 class="text-xl font-bold mb-2">訂單提交成功！</h3>
+                <p class="text-gray-500 text-sm mb-6">我們已收到您的訂單囉，謝謝您的購買！</p>
                 <button onclick="location.reload()" class="w-full bg-blue-600 text-white px-6 py-3 rounded-xl font-bold">返回首頁</button>
             </div>
         </div>
     </div>
 
-
-   <script>
+    <script>
+        // 商品定義，增加了 cost 欄位 (成本價)
         const products = [
-            { id: 1, name: "套卡組", price: 520, image: "https://i.ibb.co/GvN1g2gf/image.jpg", variants: ["KristSingto", "OffGun", "TayNew", "EarthMix", "BounPrem", "PondPhuwin", "ForceBook", "JoongDunk", "JimmySea", "FirstKhaotung", "GeminiFourth", "SeaKeen", "PerthSanta", "WilliamEst", "JuniorMark", "JossGawin", "MarkOhm", "AouBoom","OhmPoon","AlmondProgress","SurfJava","LukeMick", "ChokunAston","SaveFranc","SkyNani","DewTee", "MilkLove", "NamtanFilm", "EmiBonnie","ViewMim","JuneMewnich","JanJingjing", "Win", "Nanon" , "Chimon" , "Ohm", "LYKN","JASP.ER","FELIZZ","CLO'VER"] }, 
-            { id: 2, name: "盲盒公仔(單支)", price: 390, image: "https://i.ibb.co/HT5VwRJj/2026-03-08-175027.jpg", variants: ["A款","B款"] },
-            { id: 3, name: "盲盒公仔SetA整組", price: 5460, image: "https://i.ibb.co/5hJk3664/A.jpg",variants: [] },
-            { id: 4, name: "盲盒公仔SetB整組", price: 5070, image: "https://i.ibb.co/xthCgDCk/B.jpg",variants: [] },
-            { id: 5, name: "筆套娃", price: 430, image: "https://i.ibb.co/fd0C0CnW/image.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI", "MUVMUV", "LUNAR", "ANY", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"] },
-            { id: 6, name: "睡衣", price: 1320, image: "https://i.ibb.co/VYPNfQhM/image.jpg",description: "※請務必確認尺寸是否正確", variants: ["KING MAN(1號)","KING MAN(2號)","BABII(1號)","BABII(2號)","POLCASAN(1號)","POLCASAN(2號)","MR. SATURNWORLD(1號)","MR. SATURNWORLD(2號)","PAODY(1號)","PAODY(2號)","PERMPOON(1號)","PERMPOON(2號)","TOMAFOX(1號)","TOMAFOX(2號)","JAIDEE(1號)","JAIDEE(2號)","AVOCEAN(1號)","AVOCEAN(2號)","YUZU MUMU(1號)","YUZU MUMU(2號)","LOOK KHUNNOO(1號)","LOOK KHUNNOO(2號)","SAMRUAY(1號)","SAMRUAY(2號)","NONG NOOONG(1號)","NONG NOOONG(2號)","DOMIIA(1號)","DOMIIA(2號)","WESLEY(1號)","WESLEY(2號)","JUMMO(1號)","JUMMO(2號)","GUINZLY(1號)","GUINZLY(2號)","MOMO(1號)","MOMO(2號)","CERI(1號)","CERI(2號)","MUVMUV(1號)","MUVMUV(2號)","LUNAR(1號)","LUNAR(2號)","ANY(1號)","ANY(2號)","METAA(1號)","METAA(2號)","NILKNHAKE(1號)","NILKNHAKE(2號)","SMYLE(1號)","SMYLE(2號)","NEONA(1號)","NEONA(2號)","LYKYOU(1號)","LYKYOU(2號)"] },
-            { id: 7, name: "大象褲", price: 670, image: "https://i.ibb.co/0pW242Fd/image.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI", "MUVMUV", "LUNAR", "ANY", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"] },
-            { id: 8, name: "項鍊", price: 660, image: "https://i.ibb.co/zh7NXwpV/image.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI", "MUVMUV", "LUNAR", "ANY", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"] },
-            { id: 9, name: "毛巾", price: 440, image: "https://i.ibb.co/s96rX31D/image.jpg", variants: ["男款A","女款B"] },
-            { id: 10, name: "印章護照", price: 45, image: "https://i.ibb.co/gLVMhQJr/image.jpg", variants: ["藍色","白色"] },
-            { id: 11, name: "男生隨機卡", price: 230, image: "https://i.ibb.co/8g5GHqwh/image.jpg", description: "<li>❌❌❌隨機卡額滿停收❌❌❌</li> <li>須購買其他商品才能加購，每單至多4包。</li><li>若男女卡皆欲購買則需購買其他商品兩樣以上。</li>", limit: 4, variants: [], isSoldout: true },
-            { id: 12, name: "女生隨機卡", price: 230, image: "https://i.ibb.co/gb5vjHrd/image.jpg", description: "<li>❌❌❌隨機卡額滿停收❌❌❌</li> <li>須購買其他商品才能加購，每單至多10包。</li><li>若男女卡皆欲購買則需購買其他商品兩樣以上。</li>", limit: 10, variants: [] , isSoldout: true }
-        
+            { id: 1, name: "套卡組", price: 450, cost: 350, image: "https://i.ibb.co/GvN1g2gf/image.jpg", variants: ["KristSingto", "OffGun", "TayNew", "EarthMix", "BounPrem", "PondPhuwin", "ForceBook", "JoongDunk", "JimmySea", "FirstKhaotung", "GeminiFourth", "SeaKeen", "PerthSanta", "WilliamEst", "JuniorMark", "JossGawin", "MarkOhm", "AouBoom","OhmPoon","AlmondProgress","SurfJava","LukeMick", "ChokunAston","SaveFranc","SkyNani","DewTee", "MilkLove", "NamtanFilm", "EmiBonnie","ViewMim","JuneMewnich","JanJingjing", "Win", "Nanon" , "Chimon" , "Ohm", "LYKN","JASP.ER","FELIZZ","CLO'VER"] }, 
+            { id: 2, name: "盲盒公仔(單支)", price: 340, cost: 260, image: "https://i.ibb.co/HT5VwRJj/2026-03-08-175027.jpg", variants: ["A款","B款"] },
+            { id: 3, name: "盲盒公仔SetA整組", price: 4760, cost: 3800, image: "https://i.ibb.co/5hJk3664/A.jpg",variants: [] },
+            { id: 4, name: "盲盒公仔SetB整組", price: 4420, cost: 3500, image: "https://i.ibb.co/xthCgDCk/B.jpg",variants: [] },
+            { id: 5, name: "筆套娃", price: 380, cost: 280, image: "https://i.ibb.co/fd0C0CnW/image.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI", "MUVMUV", "LUNAR", "ANY", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"] },
+            { id: 6, name: "睡衣", price: 1190, cost: 900, image: "https://i.ibb.co/VYPNfQhM/image.jpg",description: "※請務必確認尺寸是否正確", variants: ["KING MAN(1號)","KING MAN(2號)","BABII(1號)","BABII(2號)","POLCASAN(1號)","POLCASAN(2號)","MR. SATURNWORLD(1號)","MR. SATURNWORLD(2號)","PAODY(1號)","PAODY(2號)","PERMPOON(1號)","PERMPOON(2號)","TOMAFOX(1號)","TOMAFOX(2號)","JAIDEE(1號)","JAIDEE(2號)","AVOCEAN(1號)","AVOCEAN(2號)","YUZU MUMU(1號)","YUZU MUMU(2號)","LOOK KHUNNOO(1號)","LOOK KHUNNOO(2號)","SAMRUAY(1號)","SAMRUAY(2號)","NONG NOOONG(1號)","NONG NOOONG(2號)","DOMIIA(1號)","DOMIIA(2號)","WESLEY(1號)","WESLEY(2號)","JUMMO(1號)","JUMMO(2號)","GUINZLY(1號)","GUINZLY(2號)","MOMO(1號)","MOMO(2號)","CERI(1號)","CERI(2號)","MUVMUV(1號)","MUVMUV(2號)","LUNAR(1號)","LUNAR(2號)","ANY(1號)","ANY(2號)","METAA(1號)","METAA(2號)","NILKNHAKE(1號)","NILKNHAKE(2號)","SMYLE(1號)","SMYLE(2號)","NEONA(1號)","NEONA(2號)","LYKYOU(1號)","LYKYOU(2號)"] },
+            { id: 7, name: "大象褲", price: 590, cost: 450, image: "https://i.ibb.co/0pW242Fd/image.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI", "MUVMUV", "LUNAR", "ANY", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"] },
+            { id: 8, name: "項鍊", price: 580, cost: 400, image: "https://i.ibb.co/zh7NXwpV/image.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI", "MUVMUV", "LUNAR", "ANY", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"] },
+            { id: 9, name: "毛巾", price: 380, cost: 280, image: "https://i.ibb.co/s96rX31D/image.jpg", variants: ["男款A","女款B"] },
+            { id: 10, name: "印章護照", price: 30, cost: 15, image: "https://i.ibb.co/gLVMhQJr/image.jpg", variants: ["藍色","白色"] },
+            { id: 11, name: "男生隨機卡", price: 230, cost: 180, image: "https://i.ibb.co/8g5GHqwh/image.jpg", description: "❌❌❌隨機卡額滿停收❌❌❌ ※須購買其他商品才能加購，每單至多4包。", limit: 4, variants: [] },
+            { id: 12, name: "女生隨機卡", price: 230, cost: 180, image: "https://i.ibb.co/gb5vjHrd/image.jpg", description: "❌❌❌隨機卡額滿停收❌❌❌ ※須購買其他商品才能加購，每單至多10包。", limit: 10, variants: [] , isSoldout: true }
         ];
 
         let cart = {}; 
@@ -271,7 +310,21 @@
         function renderCartDetails() {
             const listEl = document.getElementById('cartItemsList');
             const items = Object.values(cart);
-            listEl.innerHTML = items.map(item => `<div class="flex justify-between items-center bg-white p-3 rounded-xl border border-gray-200 shadow-sm"><div class="flex-1"><p class="font-bold text-sm text-gray-800">${item.name}</p><p class="text-blue-500 text-xs">${item.variant}</p></div><div class="flex items-center gap-3"><div class="flex items-center border rounded-lg bg-gray-50"><button onclick="updateCartQty('${item.id}|${item.variant}', -1)" class="px-2 py-1">-</button><span class="w-6 text-center text-sm font-bold">${item.quantity}</span><button onclick="updateCartQty('${item.id}|${item.variant}', 1)" class="px-2 py-1">+</button></div><p class="text-xs font-bold w-16 text-right">$${(item.quantity * item.price).toLocaleString()}</p></div></div>`).join('');
+            listEl.innerHTML = items.map(item => `
+                <div class="flex justify-between items-center bg-white p-3 rounded-xl border border-gray-200 shadow-sm">
+                    <div class="flex-1">
+                        <p class="font-bold text-sm text-gray-800">${item.name}</p>
+                        <p class="text-blue-500 text-xs">${item.variant}</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center border rounded-lg bg-gray-50">
+                            <button onclick="updateCartQty('${item.id}|${item.variant}', -1)" class="px-2 py-1">-</button>
+                            <span class="w-6 text-center text-sm font-bold">${item.quantity}</span>
+                            <button onclick="updateCartQty('${item.id}|${item.variant}', 1)" class="px-2 py-1">+</button>
+                        </div>
+                        <p class="text-xs font-bold w-16 text-right">$${(item.quantity * item.price).toLocaleString()}</p>
+                    </div>
+                </div>`).join('');
         }
 
         function updateCartQty(key, delta) {
@@ -295,7 +348,7 @@
         function toggleCartDetails() { document.getElementById('cartDetails').classList.toggle('hidden'); }
         function showToast(m) { const t = document.createElement('div'); t.className = "fixed top-10 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-2 rounded-full text-xs z-[100]"; t.innerText = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2000); }
 
-        async function submitOrder() {
+        function showConfirmModal() {
             const required = ['userName', 'payDate', 'payAccount', 'userIG'];
             let err = false;
             required.forEach(id => { const el = document.getElementById(id); if(!el.value.trim()){ el.classList.add('input-error'); err = true; } });
@@ -303,10 +356,41 @@
             const cartArray = Object.values(cart);
             if(err || cartArray.length === 0){ alert("請填寫必填欄位或購物車！"); return; }
 
+            const confirmListEl = document.getElementById('confirmItemList');
+            confirmListEl.innerHTML = cartArray.map(item => `
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-600">${item.name} (${item.variant}) x${item.quantity}</span>
+                    <span class="font-bold">$${(item.quantity * item.price).toLocaleString()}</span>
+                </div>
+            `).join('');
+            
+            document.getElementById('confirmTotal').innerText = '$' + document.getElementById('totalPrice').innerText;
+            document.getElementById('confirmModal').classList.remove('hidden');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').classList.add('hidden');
+        }
+
+        async function executeSubmit() {
+            closeConfirmModal();
             const submitBtn = document.getElementById('submitBtn');
             const overlay = document.getElementById('loadingOverlay');
             overlay.classList.remove('hidden');
             submitBtn.disabled = true;
+
+            const cartArray = Object.values(cart);
+            
+            // 計算額外欄位
+            let totalCost = 0;
+            let maleCardQty = 0;
+            let femaleCardQty = 0;
+            
+            cartArray.forEach(item => {
+                totalCost += (item.cost * item.quantity); // 累加成本
+                if (item.id === 11) maleCardQty += item.quantity; // 累加男生卡數量 (ID: 11)
+                if (item.id === 12) femaleCardQty += item.quantity; // 累加女生卡數量 (ID: 12)
+            });
 
             const finalData = {
                 timestamp: new Date().toLocaleString(),
@@ -316,8 +400,11 @@
                 ig: document.getElementById('userIG').value,
                 memo: document.getElementById('memo').value || "", 
                 itemsText: cartArray.map(i => `${i.name}(${i.variant}) x${i.quantity}`).join('\n'),
-                itemsArray: cartArray,
-                total: document.getElementById('totalPrice').innerText
+                total: document.getElementById('totalPrice').innerText.replace(/,/g, ''),
+                // --- 新增欄位 ---
+                totalCost: totalCost,      // 成本總金額
+                maleCardQty: maleCardQty,  // 男生隨機卡數量
+                femaleCardQty: femaleCardQty // 女生隨機卡數量
             };
 
             const URL = "https://script.google.com/macros/s/AKfycbz859c4B5D40bPV53VcJo0VMYgeUY-84Ql8rbl_19Y-NXqDSUZeriGLNnOVf6RWpzPh/exec";
@@ -331,9 +418,8 @@
                 submitBtn.disabled = false;
             }
         }
+
         window.onload = initApp;
     </script>
 </body>
 </html>
-
-
