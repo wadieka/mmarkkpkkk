@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
+<h1 class="text-2xl font-bold text-gray-800">☃️2026年Fanvial表單已關閉，請等我將孫孫們帶回國☃️</h1>
+💰<a href="https://docs.google.com/spreadsheets/d/1cnLagIAqDdCZyUTd6kQZBSekL_c8RvmOwAlxC-LCIOs/edit?gid=28351659#gid=28351659" target="_blank">對帳表連結點我</a>
+
+<!--
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,6 +93,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50 pb-64">
     <div class="max-w-md mx-auto p-4">
         <header class="text-center py-6">
@@ -113,10 +120,10 @@
             </div>
         </header>
 
-        <!-- 商品資訊區塊 -->
+        
         <div id="productList" class="space-y-6"></div>
 
-        <!-- 聯絡資訊區塊 -->
+        
         <section class="bg-white rounded-xl p-4 mb-6 shadow-sm border border-gray-100" style="margin-top: 24px">
             <h2 class="font-semibold text-lg mb-4 border-b pb-2 text-blue-600">聯絡資訊 (必填)</h2>
             <div class="space-y-4">
@@ -143,7 +150,7 @@
             </div>
         </section>
 
-        <!-- 最終提醒事項區塊 -->
+        
         <section class="mt-8 mb-4">
             <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
                 <h4 class="text-yellow-800 font-bold text-sm mb-2 flex items-center gap-1">
@@ -158,7 +165,7 @@
             </div>
         </section>
 
-        <!-- 底部購物車導航 -->
+        
         <div class="fixed bottom-0 left-0 right-0 bg-white cart-float border-t z-40">
             <div id="cartDetails" class="max-w-md mx-auto px-4 py-3 border-b bg-gray-50 hidden">
                 <div class="flex justify-between items-center mb-2">
@@ -182,7 +189,7 @@
             </div>
         </div>
 
-        <!-- 二次確認彈出視窗 -->
+        
         <div id="confirmModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 p-4">
             <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden animate-pop">
                 <div class="p-6">
@@ -194,7 +201,7 @@
                     <div class="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-200">
                         <p class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-widest border-b pb-1">購物清單</p>
                         <div id="confirmItemList" class="space-y-2">
-                            <!-- JS 動態插入 -->
+                         
                         </div>
                         <div class="mt-3 pt-2 border-t border-dashed border-gray-300 flex justify-between items-center">
                             <span class="font-bold text-gray-700">應匯款總額</span>
@@ -217,14 +224,14 @@
             </div>
         </div>
 
-        <!-- 傳送中遮罩 -->
+    
         <div id="loadingOverlay" class="fixed inset-0 bg-black/70 flex flex-col items-center justify-center hidden z-[60] p-6 text-center">
             <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin-slow mb-4"></div>
             <h3 class="text-white text-xl font-bold mb-2">訂單送出中...</h3>
             <p class="text-blue-200 text-sm">請不要重新整理頁面。</p>
         </div>
 
-        <!-- 成功彈窗 -->
+        
         <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4">
             <div class="bg-white p-8 rounded-2xl text-center max-w-sm w-full shadow-2xl">
                 <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-5xl mx-auto mb-4">✓</div>
@@ -380,16 +387,23 @@
             submitBtn.disabled = true;
 
             const cartArray = Object.values(cart);
-            
-            // 計算額外欄位
             let totalCost = 0;
             let maleCardQty = 0;
             let femaleCardQty = 0;
             
-            cartArray.forEach(item => {
-                totalCost += (item.cost * item.quantity); // 累加成本
-                if (item.id === 11) maleCardQty += item.quantity; // 累加男生卡數量 (ID: 11)
-                if (item.id === 12) femaleCardQty += item.quantity; // 累加女生卡數量 (ID: 12)
+            // 💡 預先計算所有數值
+            const itemsArray = cartArray.map(item => {
+                const q = Number(item.quantity) || 0;
+                totalCost += (Number(item.cost) || 0) * q;
+                if (item.id == 11) maleCardQty += q;
+                if (item.id == 12) femaleCardQty += q;
+                
+                return {
+                    name: item.name,
+                    variant: item.variant,
+                    quantity: q,
+                    price: Number(item.price) || 0
+                };
             });
 
             const finalData = {
@@ -401,25 +415,41 @@
                 memo: document.getElementById('memo').value || "", 
                 itemsText: cartArray.map(i => `${i.name}(${i.variant}) x${i.quantity}`).join('\n'),
                 total: document.getElementById('totalPrice').innerText.replace(/,/g, ''),
-                // --- 新增欄位 ---
-                totalCost: totalCost,      // 成本總金額
-                maleCardQty: maleCardQty,  // 男生隨機卡數量
-                femaleCardQty: femaleCardQty // 女生隨機卡數量
+                // 💡 這裡的名稱必須跟 GAS 的 data.xxxx 完全一致
+                totalCost: totalCost,
+                maleCardQty: maleCardQty,
+                femaleCardQty: femaleCardQty,
+                itemsArray: itemsArray 
             };
 
-            const URL = "https://script.google.com/macros/s/AKfycbz859c4B5D40bPV53VcJo0VMYgeUY-84Ql8rbl_19Y-NXqDSUZeriGLNnOVf6RWpzPh/exec";
+            console.log("送出資料檢查：", finalData);
+
+            const URL = "https://script.google.com/macros/s/AKfycbyhGpOmJ6XssJDQIc9fvgnvF6OXqZ-OPlRWXWL5HaCaQnb7awdSm8uGLpH-g6_4mdOxKA/exec";
+            
             try {
-                await fetch(URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(finalData) });
+                const response = await fetch(URL, { 
+                    method: 'POST', 
+                    mode: 'no-cors', 
+                    body: JSON.stringify(finalData) 
+                });
+                
+                // 成功後的處理
                 overlay.classList.add('hidden');
                 document.getElementById('successModal').classList.remove('hidden');
             } catch (e) {
-                alert("提交失敗，請檢查網路連線後重試。");
+                alert("提交失敗：" + e);
                 overlay.classList.add('hidden');
                 submitBtn.disabled = false;
             }
         }
 
+        
+
         window.onload = initApp;
     </script>
 </body>
+
+
+-->
+
 </html>
