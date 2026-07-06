@@ -396,8 +396,8 @@
             const itemsArray = cartArray.map(item => {
                 const q = Number(item.quantity) || 0;
                 totalCost += (Number(item.cost) || 0) * q;
-                if (item.id == 11) maleCardQty += q; //男生隨機卡編號
-                if (item.id == 12) femaleCardQty += q; //女生隨機卡編號
+                if (item.id == 14) maleCardQty += q; //男生隨機卡編號
+                if (item.id == 15) femaleCardQty += q; //女生隨機卡編號
                 
                 return {
                     name: item.name,
@@ -425,7 +425,7 @@
 
             console.log("送出資料檢查：", finalData);
 
-            const URL = "https://script.google.com/macros/s/AKfycbyhGpOmJ6XssJDQIc9fvgnvF6OXqZ-OPlRWXWL5HaCaQnb7awdSm8uGLpH-g6_4mdOxKA/exec";
+            const URL = "https://script.google.com/macros/s/AKfycbzGmF2-qVzmYDH_elWV1PCrvbg9QMDHlAfzxrbJgbV6X7lEun6LsgZkcL2XLo6xz4DjlA/exec";
             
             try {
                 const response = await fetch(URL, { 
