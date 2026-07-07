@@ -243,10 +243,10 @@
             { id: 1, name: "ROOMMATE小說", price: 500, cost:450 , image: "https://i.ibb.co/bMS2Pdj7/image.jpg", variants: ["室友311", "室友224", "室友510"] }, 
             { id: 2, name: "WU小說", price: 550, cost: 490, image: "https://i.ibb.co/vCSvCTBx/WU.jpg",variants: [] },
             { id: 3, name: "迷你小卡組", price: 390, cost:390 , image: "https://i.ibb.co/8vYRrsX/2026-07-06-213447.jpg", variants: ["OhmPoon", "KenPaul", "SaveFranc", "MondRyu", "JustinKeaton", "SingChimon", "PahnFond"] }, 
-            { id: 4, name: "PONPON娃", price: 850, cost: 790, image: "https://i.ibb.co/Mkh1bLGJ/2026-07-06-213655.jpg",description: "※限購1，隨時收單", limit:1, variants: [] },
+            { id: 4, name: "PONPON娃", price: 850, cost: 790, image: "https://i.ibb.co/Mkh1bLGJ/2026-07-06-213655.jpg",description: "※❌額滿停收❌", limit:1, variants: [] , isSoldout: true},
             { id: 5, name: "盲盒吊飾(單支)", price: 450, cost: 450, image: "https://i.ibb.co/6Rhzfv9N/2026-07-06-213711.jpg", variants: ["A款","B款"] },
-            { id: 6, name: "盲盒吊飾SetA整組", price: 6300, cost: 6300, image: "https://i.ibb.co/6Rhzfv9N/2026-07-06-213711.jpg",variants: [] },
-            { id: 7, name: "盲盒吊飾SetB整組", price: 5850, cost: 5850, image: "https://i.ibb.co/6Rhzfv9N/2026-07-06-213711.jpg",variants: [] },
+            { id: 6, name: "盲盒吊飾SetA整組", price: 6300, cost: 6300, image: "https://i.ibb.co/6Rhzfv9N/2026-07-06-213711.jpg",description: "※❌額滿停收❌",variants: [] , isSoldout: true },
+            { id: 7, name: "盲盒吊飾SetB整組", price: 5850, cost: 5850, image: "https://i.ibb.co/6Rhzfv9N/2026-07-06-213711.jpg",description: "※❌額滿停收❌",variants: [] , isSoldout: true},
             { id: 8, name: "鏡子", price: 290, cost: 290, image: "https://i.ibb.co/0VYBPGBn/2026-07-06-213720.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI","REXXA","PONPON", "MUVMUV", "LUNAR", "ANY","VIMMY","JEWEL", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU","FLAREY"] },
             { id: 9, name: "磁吸吊飾", price: 300, cost: 300, image: "https://i.ibb.co/bgpNbQ37/2026-07-06-213739.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI","REXXA","PONPON", "MUVMUV", "LUNAR", "ANY","VIMMY","JEWEL", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU"] },
             { id: 10, name: "筆袋", price: 590, cost: 590, image: "https://i.ibb.co/d4wkvtD5/2026-07-06-213751.jpg", variants: ["KING MAN", "BABII", "POLCASAN", "MR. SATURNWORLD", "PAODY", "PERMPOON", "TOMAFOX", "JAIDEE", "AVOCEAN", "YUZU MUMU", "LOOK KHUNNOO", "SAMRUAY", "NONG NOOONG", "DOMIIA", "WESLEY", "JUMMO", "GUINZLY", "MOMO", "CERI","REXXA","PONPON", "MUVMUV", "LUNAR", "ANY","VIMMY","JEWEL", "METAA", "NILKNHAKE", "SMYLE", "NEONA", "LYKYOU","FLAREY"] },
@@ -408,6 +408,8 @@
         function closeConfirmModal() {
             document.getElementById('confirmModal').classList.add('hidden');
         }
+
+        
 
         async function executeSubmit() {
             closeConfirmModal();
