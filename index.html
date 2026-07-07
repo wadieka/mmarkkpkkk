@@ -294,17 +294,30 @@
         function addToCart(productId) {
             const product = products.find(p => p.id == productId);
             const hasVariants = product.variants && product.variants.length > 0;
-            let variant = "單一";
-            let addQty = 1;
-            if (hasVariants) {
-                variant = document.getElementById(`select-${productId}`).value;
-                if (!variant) { alert("請選擇款式！"); return; }
-                document.getElementById(`select-${productId}`).value = "";
-            } else {
-                addQty = productQtyMap[productId] || 1;
+            let addQty = hasVariants ? 1 : (productQtyMap[productId] || 1);
+            let variant = hasVariants ? document.getElementById(`select-${productId}`).value : "單一";
+
+            if (hasVariants && !variant) { alert("請選擇款式！"); return; }
+
+            // 💡 核心檢查：如果是加購品，先算一下「購買後」會變幾包
+            if (productId === 14 || productId === 15) {
+                let otherAmount = 0;
+                Object.values(cart).forEach(item => {
+                    if (item.id !== 14 && item.id !== 15) otherAmount += (item.quantity * item.price);
+                });
+                
+                const currentCards = (cart[`14|單一`]?.quantity || 0) + (cart[`15|單一`]?.quantity || 0);
+                const allowedCards = Math.floor(otherAmount / 1000);
+                
+                if (currentCards + addQty > allowedCards) {
+                    alert(`加購規則：每滿 1,000 元可加購 1 包。\n您目前合計可加購 ${allowedCards} 包，本次無法新增 ${addQty} 包。`);
+                    return;
+                }
             }
+
             const key = `${productId}|${variant}`;
             if (product.limit && ((cart[key]?.quantity || 0) + addQty) > product.limit) { alert("超出限購！"); return; }
+            
             if (!cart[key]) cart[key] = { ...product, variant, quantity: 0 };
             cart[key].quantity += addQty;
             calculateTotal();
@@ -333,12 +346,31 @@
         }
 
         function updateCartQty(key, delta) {
-            if (cart[key]) {
-                const product = products.find(p => p.id == cart[key].id);
-                if (delta > 0 && product.limit && cart[key].quantity >= product.limit) return;
-                cart[key].quantity += delta;
-                if (cart[key].quantity <= 0) delete cart[key];
+            if (!cart[key]) return;
+            const product = products.find(p => p.id == cart[key].id);
+
+            // 💡 檢查如果是加購品，且按了 + 號
+            if (delta > 0 && (product.id === 14 || product.id === 15)) {
+                let otherAmount = 0;
+                Object.values(cart).forEach(item => {
+                    if (item.id !== 14 && item.id !== 15) otherAmount += (item.quantity * item.price);
+                });
+                
+                const currentCards = (cart[`14|單一`]?.quantity || 0) + (cart[`15|單一`]?.quantity || 0);
+                const allowedCards = Math.floor(otherAmount / 1000);
+                
+                if (currentCards + delta > allowedCards) {
+                    alert("已達加購上限！");
+                    return;
+                }
             }
+
+            // 原有限購檢查
+            if (delta > 0 && product.limit && cart[key].quantity >= product.limit) return;
+            
+            cart[key].quantity += delta;
+            if (cart[key].quantity <= 0) delete cart[key];
+            
             calculateTotal();
             renderCartDetails();
         }
